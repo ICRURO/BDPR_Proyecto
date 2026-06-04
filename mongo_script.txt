@@ -1,0 +1,34 @@
+use comunidad_gamer;
+
+db.publicaciones.drop();
+
+db.createUser({
+  user: "usuario_proyecto_foro",
+  pwd: "Passwd123",
+  roles: [ { role: "readWrite", db: "comunidad_gamer" } ]
+});
+
+db.publicaciones.insertMany([
+  {
+    "id_autor": "USR_1122",
+    "nickname_autor": "Ian_Carlo",
+    "rol_autor": "Jugador",
+    "id_juego": "GAME_ER2022",
+    "badge": "Nivel 45 - Gamer",
+    "contenido": "Elden Ring es una obra maestra absoluta, el diseño de su mundo abierto cambió la industria para siempre.",
+    "fecha": "2026-06-01",
+    "comentarios": [],
+    "reacciones": []
+  },
+  {
+    "id_autor": "USR_9999",
+    "nickname_autor": "Tejeda_Admin",
+    "rol_autor": "Administrador",
+    "id_juego": "GAME_BG3",
+    "badge": "Staff [Moderación]",
+    "contenido": "Recuerden mantener las normas de respeto en el foro de Baldur's Gate 3. ¡Disfruten del rol clásico!",
+    "fecha": "2026-06-03",
+    "comentarios": [],
+    "reacciones": []
+  }
+]);

@@ -263,7 +263,7 @@ app.post('/api/juego/resena', async (req, res) => {
         `;
         const result = await connectionOracle.execute(query, [nickname_autor], { outFormat: oracledb.OUT_FORMAT_OBJECT });
         if (result.rows.length === 0) {
-            return res.status(400).json({ error: "Publicación rechazada: Nickname inválido" });
+            return res.status(400).json({ error: "Error" });
         }
         const datosUser = result.rows[0];
         let badgeTexto = datosUser.ROL === "ADMINISTRADOR" ? `Staff [${datosUser.DEPARTAMENTO}]` : `Nivel ${datosUser.NIVEL} - Gamer`;
@@ -279,7 +279,7 @@ app.post('/api/juego/resena', async (req, res) => {
             reacciones: []   
         };
         await dbMongo.collection('publicaciones').insertOne(nuevaPublicacion);
-        res.status(201).json({ mensaje: "Publicado con éxito" });
+        res.status(201).json({ mensaje: "..." });
     } catch (error) {
         res.status(500).json({ error: "Error al procesar la reseña" });
     } finally {

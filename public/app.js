@@ -81,6 +81,7 @@ async function abrirForoJuego(idJuego) {
             muro.innerHTML = "<p class='muro-vacio'>Este foro está vacío. Se el primero en comentar</p>";
         } else {
             data.actividad_social.comentarios.forEach(c => {
+                // Se eliminó la etiqueta <span class="badge"> que pintaba el badge de Oracle
                 muro.innerHTML += `
                     <div class="reseña-item">
                         <div class="reseña-meta">
@@ -88,7 +89,6 @@ async function abrirForoJuego(idJuego) {
                             <span>${c.fecha}</span>
                         </div>
                         <p class="reseña-text">${c.contenido}</p>
-                        <span class="badge">${c.badge}</span>
                     </div>
                 `;
             });

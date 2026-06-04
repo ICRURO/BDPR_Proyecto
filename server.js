@@ -102,9 +102,9 @@ app.post('/api/auth/register', async (req, res) => {
         res.status(201).json({ mensaje: "Usuario registrado con éxito." });
     } catch (error) {
         if (error.message.includes("ORA-00001")) {
-            return res.status(400).json({ error: "Ese Nickname ya pertenece a otro usuario registrado." });
+            return res.status(400).json({ error: "Nombre de usuario ya utilizado." });
         }
-        res.status(500).json({ error: "Error interno al registrar." });
+        res.status(500).json({ error: "Error al registrar." });
     } finally {
         if (connectionOracle) await connectionOracle.close();
     }
@@ -117,7 +117,7 @@ app.post('/api/juego/nuevo', upload.single('portada_archivo'), async (req, res) 
         connectionOracle = await oracledb.getConnection();
         const esAdmin = await verificarPermisoAdmin(connectionOracle, operador_nickname);
         if (!esAdmin) {
-            return res.status(403).json({ error: "Acceso denegado: Se requieren permisos de Administrador." });
+            return res.status(403).json({ error: "Se requieren permisos de Administrador" });
         }
         const query = `
             INSERT INTO Catalogo_Videojuegos VALUES (
@@ -129,9 +129,9 @@ app.post('/api/juego/nuevo', upload.single('portada_archivo'), async (req, res) 
             id: id_juego, titulo, desarrolladora, genero, fecha, 
             precio: parseFloat(precio), url: url_compra, tienda
         }, { autoCommit: true });
-        res.status(201).json({ mensaje: "Videojuego añadidos" });
+        res.status(201).json({ mensaje: "Videojuego añadido" });
     } catch (error) {
-        res.status(500).json({ error: "Error al añadir el videojuego en Oracle" });
+        res.status(500).json({ error: "Error al añadir el videojuego" });
     } finally {
         if (connectionOracle) await connectionOracle.close();
     }
@@ -144,7 +144,7 @@ app.put('/api/juego/editar', upload.single('portada_archivo'), async (req, res) 
         connectionOracle = await oracledb.getConnection();
         const esAdmin = await verificarPermisoAdmin(connectionOracle, operador_nickname);
         if (!esAdmin) {
-            return res.status(403).json({ error: "Acceso denegado" });
+            return res.status(403).json({ error: "Se requieren permisos de Administrador" });
         }
         const query = `
             UPDATE Catalogo_Videojuegos v
@@ -162,9 +162,9 @@ app.put('/api/juego/editar', upload.single('portada_archivo'), async (req, res) 
         if (result.rowsAffected === 0) {
             return res.status(404).json({ error: "El videojuego no existe." });
         }
-        res.json({ mensaje: "Videojuego modificado con éxito" });
+        res.json({ mensaje: "Videojuego modificado" });
     } catch (error) {
-        res.status(500).json({ error: "Error al actualizar los datos en Oracle" });
+        res.status(500).json({ error: "Error" });
     } finally {
         if (connectionOracle) await connectionOracle.close();
     }
@@ -177,7 +177,7 @@ app.delete('/api/juego/eliminar', async (req, res) => {
         connectionOracle = await oracledb.getConnection();
         const esAdmin = await verificarPermisoAdmin(connectionOracle, operador_nickname);
         if (!esAdmin) {
-            return res.status(403).json({ error: "Acceso denegado: Se requieren permisos de Administrador." });
+            return res.status(403).json({ error: "Se requieren permisos de Administrador." });
         }
         const queryOracle = `DELETE FROM Catalogo_Videojuegos WHERE ID_Juego = :id`;
         const result = await connectionOracle.execute(queryOracle, { id: id_juego }, { autoCommit: true });
@@ -185,7 +185,7 @@ app.delete('/api/juego/eliminar', async (req, res) => {
             return res.status(404).json({ error: "El videojuego no existe en el catálogo" });
         }
         await dbMongo.collection('publicaciones').deleteMany({ id_juego: id_juego });
-        res.json({ mensaje: "Videojuego y su foro eliminados correctamente." });
+        res.json({ mensaje: "Videojuego eliminados correctamente." });
     } catch (error) {
         res.status(500).json({ error: "Error interno al eliminar el videojuego" });
     } finally {

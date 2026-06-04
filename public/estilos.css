@@ -46,9 +46,17 @@ button:hover, .btn:hover {
     opacity: 0.9;
 }
 
-.btn-blue { background-color: #3b82f6; color: #fff; }
-.btn-green { background-color: #10b981; color: #fff; }
-.btn-red { background-color: #ef4444; color: #fff; }
+.btn-blue { 
+    background-color: #3b82f6; color: #fff; 
+}
+
+.btn-green { 
+    background-color: #10b981; color: #fff; 
+}
+
+.btn-red { 
+    background-color: #ef4444; color: #fff; 
+}
 
 .container {
     max-width: 1100px;
@@ -65,9 +73,19 @@ button:hover, .btn:hover {
     border-bottom: 2px solid #334155;
 }
 
-.auth-status { font-size: 15px; font-weight: 500; }
-.auth-status-invited { color: #94a3b8; }
-.auth-status-active { color: #4ade80; }
+.auth-status { 
+    font-size: 15px; font-weight: 500; 
+}
+
+
+.auth-status-invited { 
+    color: #94a3b8; 
+}
+
+.auth-status-active { 
+    color: #4ade80; 
+}
+
 .auth-panel { display: flex; gap: 15px; align-items: center; }
 .auth-group { display: flex; gap: 5px; }
 .auth-divider { color: #475569; }
@@ -121,11 +139,33 @@ button:hover, .btn:hover {
 .forum-form { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
 .forum-form input, .forum-form textarea { width: 100%; }
 
-.muro-social-wrapper { margin-top: 15px; }
-.muro-vacio { color: #64748b; text-align: center; }
-.reseña-item { background-color: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
-.reseña-meta { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.reseña-meta strong { color: #fff; }
-.reseña-meta span { font-size: 12px; color: #64748b; }
-.reseña-text { color: #e2e8f0; margin: 8px 0; font-size: 14px; }
-.badge { display: inline-block; padding: 4px 8px; font-size: 11px; font-weight: bold; border-radius: 4px; background-color: #1e3a8a; color: #93c5fd; }
+.muro-social-wrapper { 
+    margin-top: 15px; 
+}
+.muro-vacio { 
+    color: #64748b; text-align: center; 
+}
+
+.reseña-item { 
+    background-color: #0f172a; border: 1px solid #334155; padding: 15px; border-radius: 8px; margin-bottom: 15px; 
+}
+
+.reseña-meta { 
+    display: flex; justify-content: space-between; margin-bottom: 5px; 
+}
+
+.reseña-meta strong { 
+    color: #fff; 
+}
+
+.reseña-meta span { 
+    font-size: 12px; color: #64748b; 
+}
+
+.reseña-text { 
+    color: #e2e8f0; margin: 8px 0; font-size: 14px; 
+}
+
+.badge { 
+    display: inline-block; padding: 4px 8px; font-size: 11px; font-weight: bold; border-radius: 4px; background-color: #1e3a8a; color: #93c5fd; 
+}

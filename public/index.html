@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamecity - BDPR</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="auth-navbar">
+        <div id="auth-status" class="auth-status">
+            <span class="auth-status-invited">Inicia sesión para participar</span>
+        </div>
+        <div id="auth-forms" class="auth-panel">
+            
+            <div class="auth-panel-block">
+                <div class="auth-group">
+                    <input type="text" id="login-id" placeholder="Nickname">
+                    <input type="password" id="login-pass" placeholder="Contraseña">
+                    <button onclick="iniciarSesion()" class="btn-blue">Iniciar Sesión</button>
+                </div>
+                <div id="login-error-msg" class="error-highlight"></div>
+            </div>
+            
+            <span class="auth-divider">|</span>
+            
+            <div class="auth-panel-block">
+                <div class="auth-group">
+                    <input type="text" id="reg-id" placeholder="Nuevo ID">
+                    <input type="password" id="reg-pass" placeholder="Password">
+                    <input type="text" id="reg-nick" placeholder="Nick/Alias">
+                    <input type="email" id="reg-email" placeholder="Correo">
+                    <button onclick="registrarUsuario()" class="btn-green">Registrar</button>
+                </div>
+                <div id="reg-status-msg" class="error-highlight"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div id="vista-catalogo">
+            <h1 class="catalog-title">Inicio</h1>
+            <p class="catalog-subtitle">Selecciona un foro y entra a la discusión.</p>
+            <div id="lista-juegos-grid" class="catalog-grid"></div>
+        </div>
+
+        <div id="vista-foro" style="display: none;">
+            <div class="nav-header">
+                <button onclick="mostrarCatalogoPrincipal()" class="btn-blue" style="background-color: #475569;">Volver</button>
+            </div>
+
+            <div class="forum-grid">
+                <div class="card">
+                    <img id="juego-portada-foro" src="" alt="Portada" class="game-forum-img">
+                    <h2 id="juego-titulo" class="card-title-blue">--</h2>
+                    <p class="card-subtitle">Estudio: <span id="juego-estudio">--</span> | Género: <span id="juego-genero">--</span></p>
+                    <h4 class="section-title-green">Precios:</h4>
+                    <div id="precios-lista" class="prices-container"></div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title-red">Publicar Reseña</h3>
+                    <div class="forum-form">
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label style="font-size: 12px; color: #94a3b8; font-weight: bold;">Nickname Autor:</label>
+                            <input type="text" id="foro-autor-id" placeholder="Usuario" disabled>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label style="font-size: 12px; color: #94a3b8; font-weight: bold;">Tu Reseña:</label>
+                            <textarea id="foro-contenido" rows="4" placeholder="Inicia sesión para publicar tu reseña" disabled></textarea>
+                        </div>
+                        <button id="btn-publicar" onclick="publicarReseña()" class="btn-green" disabled style="background-color: #475569; cursor: not-allowed;">Publicar Reseña Oficial</button>
+                        <div id="foro-status-msg" class="error-highlight"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 25px;">
+                <h3 class="card-title-sky">Más reseñas</h3>
+                <div id="muro-social" class="muro-social-wrapper"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

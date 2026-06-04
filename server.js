@@ -35,7 +35,7 @@ async function inicializarMotores() {
         dbMongo = mongoClient.db('comunidad_gamer');
         await oracledb.createPool(oracleConfig);
         app.listen(PORT, () => {
-            console.log(`Servidor seguro corriendo en http://localhost:${PORT}`);
+            console.log(`Picale aqui http://localhost:${PORT}`);
         });
     } catch (error) {
         process.exit(1);
